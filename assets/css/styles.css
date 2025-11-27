@@ -1,13 +1,23 @@
+/* =========================================================
+   1. VARIABLES GLOBALES
+   Aquí definimos los colores base. Cambia esto y cambia todo.
+   ========================================================= */
 :root {
-  --primary: #4361ee;
-  --secondary: #3f37c9;
-  --accent: #4cc9f0;
-  --light: #f8f9fa;
-  --success: #4caf50;
-  --warning: #ff9800;
-  --danger: #f44336;
+  --primary: #4361ee;    /* Azul principal */
+  --secondary: #3f37c9;  /* Azul oscuro (para hover) */
+  --accent: #4cc9f0;     /* Azul claro */
+  --light: #f8f9fa;      /* Fondo gris muy claro */
+  --success: #4caf50;    /* Verde éxito */
+  --warning: #ff9800;    /* Naranja advertencia */
+  --danger: #f44336;     /* Rojo peligro/borrar */
 }
 
+
+
+/* =========================================================
+   2. ESTILOS GENERALES
+   Configuración básica del cuerpo de la página.
+   ========================================================= */
 body {
   font-family: 'Poppins', sans-serif;
   background-color: #f5f7fa;
@@ -16,20 +26,33 @@ body {
 
 .app-container {
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 0 auto; /* Centra el contenido */
 }
 
-.login-container {
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 2rem;
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+/* Utilidad para ocultar elementos (CRÍTICA PARA EL JS) */
+.hidden {
+  display: none !important;
 }
 
+/* Botones personalizados */
+.app-btn-primary {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: white;
+}
+
+.app-btn-primary:hover {
+  background-color: var(--secondary);
+  border-color: var(--secondary);
+}
+
+/* =========================================================
+   3. SECCIÓN DE LOGIN Y ROLES
+   Estilos para la primera pantalla que ve el usuario.
+   ========================================================= */
 .role-card {
   cursor: pointer;
+  background-color: white;
   transition: all 0.3s ease;
   border: 2px solid transparent;
   border-radius: 10px;
@@ -39,10 +62,11 @@ body {
 }
 
 .role-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-5px); /* Efecto de "levantarse" */
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
 }
 
+/* Cuando seleccionas una tarjeta, se pinta de azul */
 .role-card.selected {
   border-color: var(--primary);
   background-color: rgba(67, 97, 238, 0.05);
@@ -54,7 +78,48 @@ body {
   color: var(--primary);
 }
 
-dashboard-sidebar {
+.login-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.login-note {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #555;
+  text-align: center;
+  line-height: 1.4;
+}
+
+/* =========================================================
+   4. DASHBOARD Y NAVEGACIÓN
+   Estilos para el panel lateral y las cabeceras.
+   ========================================================= */
+.header {
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  position: sticky; /* Se queda pegado arriba al hacer scroll */
+  top: 0;
+  z-index: 100;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%; /* Lo hace redondo */
+  background-color: var(--primary);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.dashboard-sidebar {
   background-color: white;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
@@ -86,6 +151,9 @@ dashboard-sidebar {
   text-align: center;
 }
 
+/* =========================================================
+   5. TARJETAS DE CONTENIDO Y TAREAS
+   ========================================================= */
 .content-card {
   background-color: white;
   border-radius: 10px;
@@ -94,12 +162,12 @@ dashboard-sidebar {
   margin-bottom: 1.5rem;
 }
 
-task-card {
-  border-left: 4px solid var(--primary);
+.task-card {
+  border-left: 4px solid var(--primary); /* Borde azul a la izquierda */
   transition: all 0.3s ease;
 }
 
-task-card:hover {
+.task-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
 }
@@ -111,20 +179,10 @@ task-card:hover {
   margin-bottom: 1rem;
 }
 
-.app-btn-primary {
-  background-color: var(--primary);
-  border-color: var(--primary);
-}
-
-.app-btn-primary:hover {
-  background-color: var(--secondary);
-  border-color: var(--secondary);
-}
-
-.hidden {
-  display: none !important;
-}
-
+/* =========================================================
+   6. RESULTADOS Y GRAFICOS
+   Estilos para las barras de progreso y carga.
+   ========================================================= */
 .results-summary {
   background-color: #f0f7ff;
   border-radius: 10px;
@@ -135,14 +193,14 @@ task-card:hover {
 .competency-bar {
   height: 10px;
   border-radius: 10px;
-  background-color: #e0e0e0;
+  background-color: #e0e0e0; /* Fondo gris de la barra */
   margin-bottom: 5px;
 }
 
 .competency-progress {
   height: 100%;
   border-radius: 10px;
-  background-color: var(--primary);
+  background-color: var(--primary); /* Relleno azul */
 }
 
 .loading-indicator {
@@ -153,6 +211,7 @@ task-card:hover {
   min-height: 300px;
 }
 
+/* Animación del círculo de carga */
 .spinner {
   width: 50px;
   height: 50px;
@@ -164,24 +223,4 @@ task-card:hover {
 
 @keyframes spin {
   to { transform: rotate(360deg); }
-}
-
-.avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: var(--primary);
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-}
-
-.header {
-  background-color: white;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  position: sticky;
-  top: 0;
-  z-index: 100;
 }
